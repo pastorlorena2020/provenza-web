@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Manicura | Provenza Beauty</title>
+
+  <!-- Tipografías -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;500;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    @font-face {
+  font-family: 'TanMonCheri';
+  src: url('tan-mon-cheri.woff2') format('woff2'),
+       url('tan-mon-cheri.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+    :root {
+      --rosa-claro: #f7ebea;
+      --rosa-medio: #cdb7bb;
+      --nude: #daa696;
+      --terracota1: #c7896d;
+      --terracota2: #d4a388;
+      --gris: #979892;
+      --oscuro: #2b2b2b;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Raleway', sans-serif;
+      background-color: var(--rosa-claro);
+      color: var(--gris);
+      scroll-behavior: smooth;
+    }
+
+    /* --- NAVBAR FIJO --- */
+    nav {
+      background-color: white;
+      color: var(--oscuro);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    nav h1 {
+      font-family: 'TanMonCheri', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--oscuro);
+      margin: 0;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+    }
+
+    nav ul li {
+      position: relative;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: var(--oscuro);
+      font-weight: 500;
+      position: relative;
+      padding-bottom: 4px;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: var(--terracota2);
+    }
+
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--terracota2);
+      transition: width 0.3s ease, left 0.3s ease;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+      left: 0;
+    }
+
+    .dropdown .submenu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: white;
+      list-style: none;
+      padding: 10px 0;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      z-index: 999;
+      min-width: 200px;
+    }
+    .dropdown:hover .submenu {
+      display: block;
+    }
+    .dropdown .submenu li {
+      padding: 8px 20px;
+    }
+    .dropdown .submenu li a {
+      color: var(--oscuro);
+      text-decoration: none;
+      display: block;
+      transition: background 0.3s, color 0.3s;
+    }
+    .dropdown .submenu li a:hover {
+      background-color: var(--rosa-medio);
+      color: white;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+    }
+    .social-icons a {
+      color: var(--oscuro);
+      font-size: 1.3rem;
+      transition: color 0.3s ease;
+    }
+    .social-icons a:hover {
+      color: var(--terracota2);
+    }
+
+    /* --- SECCIÓN PRINCIPAL --- */
+    .main-section {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+      padding: 120px 50px 80px;
+      max-width: 1200px;
+      margin: auto;
+      flex-wrap: wrap;
+    }
+
+    .main-section .image-container {
+      flex: 1 1 400px;
+      min-width: 300px;
+    }
+    .main-section .image-container img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .main-section .text-container {
+      flex: 1 1 500px;
+      min-width: 300px;
+    }
+
+    .main-section .text-container h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: var(--oscuro);
+    }
+
+    .main-section .text-container p.lead {
+      font-size: 1.3rem;
+      font-weight: 300;
+      margin-bottom: 30px;
+      color: #444;
+    }
+
+    .main-section .text-container p.body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #555;
+    }
+
+    /* --- ANIMACIONES --- */
+    .fade-in-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: all 0.9s ease-out;
+    }
+    .fade-in-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: all 0.9s ease-out;
+    }
+    .visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 0.9rem;
+      color: var(--gris);
+    }
+
+    @media (max-width: 768px) {
+      .main-section {
+        flex-direction: column;
+        padding: 100px 20px 40px;
+      }
+      .main-section .text-container h2 {
+        font-size: 2rem;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <h1>PROVENZA</h1>
+    <div class="nav-container">
+      <ul>
+        <li><a href="inicio.html">Inicio</a></li>
+        <li class="dropdown">
+          <a href="#">Servicios</a>
+          <ul class="submenu">
+            <li><a href="depilacion-laser.html">Depilación Láser</a></li>
+            <li><a href="depilacion-cera.html">Depilación con Cera</a></li>
+            <li><a href="manicura.html">Manicura</a></li>
+            <li><a href="pedicura.html">Pedicura</a></li>
+            <li><a href="faciales.html">Tratamientos Faciales</a></li>
+            <li><a href="masajes.html">Masajes</a></li>
+            <li><a href="cejas.html">Diseño de Cejas</a></li>
+          </ul>
+          </li>
+  <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="ubicacion.html">Ubicación</a></li>
+</ul>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/provenzabeauty" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/549XXXXXXXXXX" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="main-section">
+    <div class="image-container fade-in-left">
+      <img src="manicura.jpg.jpg" alt="Manicura">
+    </div>
+    <div class="text-container fade-in-right">
+      <h2>Manicura</h2>
+      <p class="lead">Manos que hablan de vos. Cuidado que eleva tu presencia.</p>
+      <p class="body">
+        En Provenza, la manicura no es solo estética: es un arte sutil que embellece, relaja y refleja tu estilo personal. Usamos productos de alta calidad y técnicas precisas para que cada detalle, desde el limado hasta el color final, transmita elegancia y distinción.
+        <br><br>
+        Nuestros tratamientos incluyen hidratación profunda, cuidado de cutículas, limado y esmaltado profesional, con una amplia gama de colores y acabados. Ya sea para una ocasión especial o para tu rutina de autocuidado, te ofrecemos una experiencia completa que realza la belleza de tus manos con un toque femenino, moderno y refinado.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Provenza Beauty · Mendoza, Argentina
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.4 });
+
+    document.querySelectorAll('.fade-in-left, .fade-in-right').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

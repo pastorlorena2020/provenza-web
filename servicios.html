@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Servicios | Provenza Beauty Room</title>
+
+  <!-- Tipografía + Iconos -->
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;500;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    :root {
+      --rosa-claro: #f7ebea;
+      --rosa-medio: #cdb7bb;
+      --nude: #daa696;
+      --gris: #979892;
+      --oscuro: #2b2b2b;
+      --transparente-negro: rgba(0, 0, 0, 0.6);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Raleway', sans-serif;
+      background-color: var(--rosa-claro);
+      color: var(--gris);
+      scroll-behavior: smooth;
+    }
+
+    nav {
+      background-color: var(--rosa-medio);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 30px 50px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    nav h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      margin: 0;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: var(--nude);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-icons a {
+      color: white;
+      font-size: 1.3rem;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: var(--nude);
+    }
+
+    .servicios {
+      padding: 140px 30px 100px;
+      background-color: var(--rosa-claro);
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .servicios-titulo {
+      text-align: center;
+      font-size: 2.5rem;
+      color: var(--gris);
+      margin-bottom: 80px;
+      font-weight: 500;
+    }
+
+    .servicio {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      margin-bottom: 100px;
+      flex-wrap: wrap;
+    }
+
+    .servicio.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .servicio img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .servicio .texto {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .servicio .texto h3 {
+      font-size: 1.8rem;
+      color: var(--gris);
+      margin-bottom: 20px;
+    }
+
+    .servicio .texto p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #555;
+    }
+
+    .animate-up {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease;
+    }
+
+    .animate-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 0.9rem;
+      color: var(--gris);
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .servicio {
+        flex-direction: column !important;
+        text-align: center;
+      }
+
+      .servicio img {
+        max-width: 100%;
+      }
+
+      .servicio .texto h3 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <h1>PROVENZA</h1>
+    <div class="nav-container">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+      </ul>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/provenzabeauty" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/549XXXXXXXXXX" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- SERVICIOS -->
+  <section class="servicios">
+    <h2 class="servicios-titulo animate-up">Nuestros Servicios</h2>
+
+    <div class="servicio animate-up">
+      <img src="depilacionlaser.jpg.jpg" alt="Depilación Láser" />
+      <div class="texto">
+        <h3>Depilación Láser</h3>
+        <p>
+          La tecnología más avanzada al servicio de tu piel. Nuestra depilación láser elimina el vello no deseado desde la raíz con máxima precisión, respetando hasta la piel más sensible. Disfrutá de una sensación de libertad, suavidad y confianza, todos los días.
+        </p>
+      </div>
+    </div>
+
+    <div class="servicio reverse animate-up">
+      <img src="depilacioncera.jpg.jpg" alt="Depilación con Cera" />
+      <div class="texto">
+        <h3>Depilación con Cera</h3>
+        <p>
+          Un clásico que nunca falla. Nuestra técnica artesanal y profesional te brinda una depilación efectiva y delicada. Experimentá una sensación de limpieza y suavidad que revitaliza tu piel, ideal para quienes valoran lo natural y efectivo.
+        </p>
+      </div>
+    </div>
+
+    <div class="servicio animate-up">
+      <img src="manicura.jpg.jpg" alt="Manicura" />
+      <div class="texto">
+        <h3>Manicura</h3>
+        <p>
+          Nuestras manos dicen mucho de nosotras. En Provenza cuidamos cada detalle: desde la hidratación profunda hasta la elección perfecta del color. Una experiencia sensorial para que tus manos luzcan impecables, elegantes y siempre a la moda.
+        </p>
+      </div>
+    </div>
+
+    <div class="servicio reverse animate-up">
+      <img src="pedicura.jpg.jpg" alt="Pedicura" />
+      <div class="texto">
+        <h3>Pedicura</h3>
+        <p>
+          Un ritual de bienestar que embellece y relaja. Sumergí tus pies en una experiencia que combina estética, higiene y un profundo descanso. Ideal para desconectar del mundo y reconectar con vos misma desde los pies hacia el alma.
+        </p>
+      </div>
+    </div>
+
+    <div class="servicio animate-up">
+      <img src="e784dc7d94baf6b4b908292b889a5d09.jpg" alt="Tratamientos Faciales" />
+      <div class="texto">
+        <h3>Tratamientos Faciales</h3>
+        <p>
+          Tu piel es única, y merece un cuidado a su medida. Nuestros tratamientos faciales están diseñados para nutrir, iluminar y equilibrar tu rostro, devolviéndole frescura, elasticidad y ese brillo saludable que nace desde adentro.
+        </p>
+      </div>
+    </div>
+
+    <div class="servicio reverse animate-up">
+      <img src="masajes.jpg.jpg" alt="Masajes" />
+      <div class="texto">
+        <h3>Masajes</h3>
+        <p>
+          Liberá tensiones, armonizá cuerpo y mente. Nuestros masajes combinan técnicas relajantes y terapéuticas para ayudarte a soltar el estrés acumulado y recuperar tu equilibrio interior. Un viaje sensorial hacia el bienestar más profundo.
+        </p>
+      </div>
+    </div>
+
+    <div class="servicio animate-up">
+      <img src="depilacioncejas.jpg.jpg" alt="Diseño de Cejas" />
+      <div class="texto">
+        <h3>Diseño de Cejas</h3>
+        <p>
+          Las cejas enmarcan tu mirada y realzan tu expresión. En Provenza cuidamos su diseño con precisión y arte, respetando la armonía natural de tu rostro. Porque una mirada bien definida transforma tu belleza.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Provenza Beauty · Mendoza, Argentina
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.4
+    });
+
+    const animatables = document.querySelectorAll('.animate-up');
+    animatables.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

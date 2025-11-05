@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF‑8" />
+  <meta name="viewport" content="width=device‑width, initial‑scale=1.0"/>
+  <title>Ubicación | Provenza Beauty</title>
+
+  <!-- Tipografías -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;500;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Fuente TAN MON CHERI -->
+  <style>
+    @font-face {
+      font-family: 'TanMonCheri';
+      src: url('tan-mon-cheri.woff2') format('woff2'),
+           url('tan-mon-cheri.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    :root {
+      --rosa-claro: #f7ebea;
+      --rosa-medio: #cdb7bb;
+      --nude: #daa696;
+      --terracota1: #c7896d;
+      --terracota2: #d4a388;
+      --gris: #979892;
+      --oscuro: #2b2b2b;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box‑sizing: border-box;
+    }
+
+    body {
+      font-family: 'Raleway';
+      background-color: var(--rosa-claro);
+      color: var(--gris);
+      scroll-behavior: smooth;
+    }
+
+    nav {
+      background-color: white;
+      color: var(--oscuro);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    nav h1 {
+      font-family: 'TanMonCheri', serif;
+      font-size: 2rem;
+      font-weight: normal;
+      color: var(--oscuro);
+      margin: 0;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: var(--oscuro);
+      font-weight: 500;
+      position: relative;
+      padding-bottom: 4px;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: var(--terracota2);
+    }
+
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--terracota2);
+      transition: width 0.3s ease, left 0.3s ease;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+      left: 0;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown .submenu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: white;
+      padding: 10px 0;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      z-index: 999;
+      min-width: 200px;
+    }
+
+    .dropdown:hover .submenu {
+      display: block;
+    }
+
+    .dropdown .submenu li {
+      padding: 8px 20px;
+    }
+
+    .dropdown .submenu li a {
+      color: var(--oscuro);
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown .submenu li a:hover {
+      background-color: var(--rosa-medio);
+      color: white;
+    }
+
+    .social-icons a {
+      color: var(--oscuro);
+      font-size: 1.3rem;
+      margin-left: 10px;
+    }
+
+    .hero‑map‑intro {
+      background-color: var(--rosa‑claro);
+      padding: 80px 30px;
+      text-align: center;
+    }
+
+    .hero‑map‑intro h2 {
+      font-family: 'Raleway', serif;
+      font-size: 2.8rem;
+      color: var(--terracota1);
+      margin-bottom: 20px;
+    }
+
+    .hero‑map‑intro p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .map-container {
+      width: 100%;
+      height: 60vh;
+      margin: 0 auto;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .details-section {
+      background-color: white;
+      padding: 60px 30px;
+      max-width: 1200px;
+      margin: auto;
+      text-align: left;
+    }
+
+    .details-section h3 {
+      font-family: 'Raleway', serif;
+      font-size: 2rem;
+      color: var(--terracota1);
+      margin-bottom: 15px;
+    }
+
+    .details-section p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--gris);
+      margin-bottom: 10px;
+    }
+
+    .footer‑provenza {
+      background-color: var(--oscuro);
+      padding: 60px 20px;
+      color: white;
+      text-align: center;
+    }
+
+    .footer‑provenza .footer-logo {
+      max-width: 120px;
+      margin-bottom: 20px;
+      filter: brightness(0) invert(1);
+    }
+
+    .footer‑provenza .frase {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-style: italic;
+      color: var(--terracota2);
+      margin-bottom: 20px;
+    }
+
+    .footer‑provenza .social-footer a {
+      color: white;
+      font-size: 1.5rem;
+      margin: 0 10px;
+      transition: color 0.3s ease;
+    }
+
+    .footer‑provenza .social-footer a:hover {
+      color: var(--terracota2);
+    }
+
+    .footer‑provenza .direccion {
+      font-size: 0.95rem;
+      color: var(--gris);
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 15px 30px;
+      }
+      .hero‑map‑intro h2 {
+        font-size: 2.2rem;
+      }
+      .hero‑map‑intro p {
+        font-size: 1rem;
+      }
+      .map-container { height: 40vh; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <h1>PROVENZA</h1>
+    <div class="nav-container">
+      <ul>
+        <li><a href="inicio.html">Inicio</a></li>
+        <li class="dropdown">
+          <a href="#">Servicios</a>
+          <ul class="submenu">
+            <li><a href="depilacion-laser.html">Depilación Láser</a></li>
+            <li><a href="depilacion-cera.html">Depilación con Cera</a></li>
+            <li><a href="manicura.html">Manicura</a></li>
+            <li><a href="pedicura.html">Pedicura</a></li>
+            <li><a href="faciales.html">Tratamientos Faciales</a></li>
+            <li><a href="masajes.html">Masajes</a></li>
+            <li><a href="cejas.html">Diseño de Cejas</a></li>
+          </ul>
+      </li>
+      <li><a href="contacto.html">Contacto</a></li>
+      <li><a href="ubicacion.html">Ubicación</a></li>
+      </ul>
+<div class="social-icons">
+      <a href="https://www.instagram.com/provenzabeauty" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/549XXXXXXXXXX" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- INTRO UBICACIÓN -->
+  <section class="hero‑map‑intro">
+    <h2>Nos encontramos en el corazón de Mendoza</h2>
+    <p>Ven a visitarnos en nuestro espacio de estética diseñado para que experimentes bienestar, belleza y atención exclusiva.</p>
+  </section>
+
+  <!-- MAPA EMBED -->
+  <section class="mapa-section">
+  <div class="mapa-container">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1457.9979270720519!2d-68.8517830662298!3d-32.90875639676437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x967e097393c61b6b%3A0xa97ee5ec989820b1!2sBeltr%C3%A1n%201470%2C%20M5504%20Godoy%20Cruz%2C%20Mendoza!5e0!3m2!1ses!2sar!4v1762352322792!5m2!1ses!2sar" 
+      width="100%" 
+      height="500" 
+      style="border:0;" 
+      allowfullscreen="" 
+      loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
+
+  <!-- DATOS UBICACIÓN -->
+  <section class="details-section">
+    <h3>Dirección</h3>
+    <p>Av. Ejemplo 1234 · Maipú, Mendoza · Argentina</p>
+
+    <h3>Horario</h3>
+    <p>Lunes a Viernes: 10:00 – 19:00</p>
+    <p>Sábado: 10:00 – 14:00</p>
+
+    <h3>Contacto</h3>
+    <p>Email: contacto@provenzabeauty.com</p>
+    <p>Teléfono / WhatsApp: +54 9 261 123 4567</p>
+  </section>
+
+  <!-- FOOTER -->
+  <section class="footer‑provenza">
+    <img src="footer-logo.png" alt="Logo Provenza" class="footer-logo">
+    <p class="frase">"Querete. Cuidate. Brillá desde adentro."</p>
+    <div class="social-footer">
+      <a href="https://www.instagram.com/provenzabeauty" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/provenzabeauty" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    </div>
+    <p class="direccion">Mendoza, Argentina</p>
+  </section>
+
+</body>
+</html>
