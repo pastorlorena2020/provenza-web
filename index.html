@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Provenza Beauty</title>
+
+  <!-- Tipografías -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;500;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+
+    @font-face {
+  font-family: 'TanMonCheri';
+  src: url('tan-mon-cheri.woff2') format('woff2'),
+       url('tan-mon-cheri.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+    :root {
+      --rosa-claro: #f7ebea;
+      --rosa-medio: #cdb7bb;
+      --nude: #daa696;
+      --terracota1: #c7896d;
+      --terracota2: #d4a388;
+      --gris: #979892;
+      --oscuro: #2b2b2b;
+      --transparente-negro: rgba(0, 0, 0, 0.5);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Raleway', sans-serif;
+      background-color: var(--rosa-claro);
+      color: var(--gris);
+      scroll-behavior: smooth;
+    }
+
+    /* --- NAVBAR FIJO --- */
+    nav {
+      background-color: white;
+      color: var(--oscuro);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    nav h1 {
+      font-family: 'TanMonCheri', serif;
+  font-size: 2rem;
+  font-weight: normal; 
+  letter-spacing: 1px;
+  color: var(--oscuro);
+  margin: 0;
+}
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: var(--oscuro);
+      font-weight: 500;
+      position: relative;
+      padding-bottom: 4px;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: var(--terracota2);
+    }
+
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--terracota2);
+      transition: width 0.3s ease, left 0.3s ease;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+      left: 0;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+    }
+    .social-icons a {
+      color: var(--oscuro);
+      font-size: 1.3rem;
+      transition: color 0.3s ease;
+    }
+    .social-icons a:hover {
+      color: var(--terracota2);
+    }
+
+    /* --- MENÚ DESPLEGABLE --- */
+    .dropdown {
+      position: relative;
+    }
+    .dropdown .submenu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: white;
+      list-style: none;
+      padding: 10px 0;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      z-index: 999;
+      min-width: 200px;
+    }
+    .dropdown:hover .submenu {
+      display: block;
+    }
+    .dropdown .submenu li {
+      padding: 8px 20px;
+    }
+    .dropdown .submenu li a {
+      color: var(--oscuro);
+      text-decoration: none;
+      display: block;
+      transition: background 0.3s, color 0.3s;
+    }
+    .dropdown .submenu li a:hover {
+      background-color: var(--rosa-medio);
+      color: white;
+    }
+
+    /* --- HERO PARALLAX --- */
+    .hero-parallax {
+      background-image: url('esta.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero-content {
+      background-color: transparent;
+      padding: 60px 40px;
+      text-align: left;
+      color: var(--terracota1);
+      max-width: 650px;
+      margin-left: 50px;
+      transition: all 1s ease-out;
+    }
+
+    .hero-content h2 {
+      font-family: 'TanMonCheri', serif;
+  font-size: 3.2rem;
+  font-weight: normal;
+  margin-bottom: 8px;
+  color: var(--terracota1);
+}
+
+    .hero-content h3 {
+      font-family: 'Raleway', sans-serif;
+      font-size: 3.2rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: rgba(212, 163, 136, 0.3); /* terracota2 con 30% de transparencia */
+    }
+
+    .hero-content p.subtitle {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 500;
+      line-height: 1.5;
+      color: var(--terracota2);
+    }
+
+.boton-turno {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 30px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  background-color: var(--terracota1);
+  text-decoration: none;
+  border-radius: 30px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.boton-turno:hover {
+  background-color: var(--terracota2);
+  transform: translateY(-3px);
+}
+
+    .animate-fade {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease;
+    }
+    .animate-fade.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* --- DESCRIPCIÓN --- */
+    .info-wrapper {
+  background-color: var(--rosa-claro); /* antes era var(--oscuro) */
+  width: 100%;
+  padding: 80px 20px 40px;
+}
+
+    .info {
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+      color: white;
+    }
+    .info h3 {
+      font-family: 'Raleway', serif;
+      font-size: 2.5rem;
+      margin-bottom: 25px;
+      font-weight: 600;
+      color: var(--terracota2);
+    }
+    .info p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #2b2b2b;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 0.9rem;
+      color: var(--gris);
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 15px 30px;
+      }
+      .hero-content h2 {
+        font-size: 2.4rem;
+      }
+      .hero-content h3 {
+        font-size: 2.4rem;
+      }
+      .hero-content p.subtitle {
+        font-size: 1.1rem;
+      }
+      .hero-parallax {
+        height: 70vh;
+      }
+    }
+
+        .destacados-wrapper {
+  background-color: var(--rosa-claro); /* antes era var(--oscuro) */
+  padding: 60px 20px 100px; 
+}
+
+.destacados-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.destacado {
+  background-color: white; /* blanco por dentro */
+  padding: 40px 30px;
+  text-align: center;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.destacado:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+.destacado .icono {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 20px;
+  filter: brightness(0); /* iconos negros */
+}
+
+.destacado h4 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--oscuro);
+  margin-bottom: 15px;
+}
+
+.destacado p {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1rem;
+  color: var(--gris);
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .destacados-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .destacados-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.seccion-links-img {
+  width: 100%;
+  height: 600px;
+  background-image: url('PROveNzA.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.contenedor-links {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.link-box {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Aseguramos que el <a> no tenga estilos por defecto */
+.link-box a {
+  text-decoration: none;  /* quita subrayado */
+  outline: none;          /* quita línea azul */
+}
+
+.link-box span {
+  font-family: 'Raleway', sans-serif;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  font-weight: 700; /* negrita */
+  letter-spacing: 2px;
+  color: white; /* texto blanco */
+  border: 1px solid white;
+  padding: 14px 30px;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.5); /* semitransparente */
+  backdrop-filter: blur(4px);
+}
+
+/* Quitar línea azul de enfoque */
+.link-box a:focus,
+.link-box span:focus {
+  outline: none;
+}
+
+.link-box:hover span {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.footer-provenza {
+  background-color: var(--oscuro);
+  padding: 60px 20px;
+  color: white;
+  text-align: center;
+}
+
+.footer-provenza .footer-logo {
+  max-width: 120px;
+  margin-bottom: 20px;
+  filter: brightness(0) invert(1); /* para que se vea blanco si es oscuro */
+}
+
+.footer-provenza .frase {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-style: italic;
+  margin-bottom: 20px;
+  color: var(--terracota2);
+}
+
+.footer-provenza .social-footer {
+  margin-bottom: 20px;
+}
+
+.footer-provenza .social-footer a {
+  color: white;
+  font-size: 1.5rem;
+  margin: 0 10px;
+  transition: color 0.3s ease;
+}
+
+.footer-provenza .social-footer a:hover {
+  color: var(--terracota2);
+}
+
+.footer-provenza .direccion {
+  font-size: 0.95rem;
+  color: var(--gris);
+}
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <h1>PROVENZA</h1>
+    <div class="nav-container">
+      <ul>
+                <li><a href="index.html">Inicio</a></li>
+        <li class="dropdown">
+          <a href="#">Servicios</a>
+          <ul class="submenu">
+            <li><a href="depilacion-laser.html">Depilación Láser</a></li>
+            <li><a href="depilacion-cera.html">Depilación con Cera</a></li>
+            <li><a href="manicura.html">Manicura</a></li>
+            <li><a href="pedicura.html">Pedicura</a></li>
+            <li><a href="faciales.html">Tratamientos Faciales</a></li>
+            <li><a href="masajes.html">Masajes</a></li>
+            <li><a href="cejas.html">Diseño de Cejas</a></li>
+          </ul>
+        </li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="ubicacion.html">Ubicación</a></li>
+      </ul>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/provenzabeauty" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/549XXXXXXXXXX" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO PARALLAX -->
+  <section class="hero-parallax">
+    <div class="hero-content animate-fade">
+      <h2>PROVENZA</h2>
+      <h3>Beauty Room</h3>
+      <p class="subtitle">Somos un centro de estética creado para realzar tu belleza natural y tu bienestar interior.</p>
+      <a href="https://wa.me/549XXXXXXXXXX" target="_blank" class="boton-turno">Agenda tu turno</a>
+    </div>
+  </section>
+
+  <!-- SECCIÓN DE INTRODUCCIÓN -->
+  <section class="info-wrapper">
+    <div class="info">
+      <h3>Un espacio diseñado para mimarte</h3>
+      <p>
+        En Provenza creemos que la belleza es una forma de autocuidado. Nuestro espacio fue creado para brindarte
+        una experiencia de relajación, confianza y conexión contigo misma. Ofrecemos tratamientos personalizados
+        que no solo realzan tu belleza natural, sino que también te invitan a reconectar con tu esencia.
+      </p>
+      <br>
+      <p>
+        Cada detalle en nuestro centro ha sido cuidadosamente pensado para que sientas paz, bienestar y calidez.
+        Porque cuando te cuidás, brillás desde adentro.
+      </p>
+    </div>
+  </section>
+
+<!-- SECCIÓN DESTACADOS -->
+<section class="destacados-wrapper">
+  <div class="destacados-container">
+    <div class="destacado">
+      <img src="noun-relax-7704273.png" alt="Ícono Relax" class="icono">
+      <h4>Ambiente Cálido</h4>
+      <p>Te damos la bienvenida en un espacio íntimo pensado para tu bienestar.</p>
+    </div>
+    <div class="destacado">
+      <img src="noun-beauty-7843974.png" alt="Ícono Personalización" class="icono">
+      <h4>Atención Personalizada</h4>
+      <p>Cada tratamiento es diseñado para vos y tu tipo de piel.</p>
+    </div>
+    <div class="destacado">
+      <img src="noun-beauty-6547378.png" alt="Ícono Alta Gama" class="icono">
+      <h4>Alta Cosmética</h4>
+      <p>Trabajamos con productos profesionales y resultados visibles.</p>
+    </div>
+    <div class="destacado">
+      <img src="noun-beauty-7574313.png" alt="Ícono Profesional" class="icono">
+      <h4>Profesionales Expertas</h4>
+      <p>Un equipo comprometido con el cuidado y la excelencia.</p>
+    </div>
+  </div>
+</section>
+
+<section class="seccion-links-img">
+  <div class="contenedor-links">
+    <div class="link-box">
+      <a href="ubicacion.html"><span>UBICACIÓN</span></a>
+    </div>
+    <div class="link-box">
+      <a href="nosotras.html"><span>NOSOTRAS</span></a>
+    </div>
+    <div class="link-box">
+      <a href="https://wa.me/549XXXXXXXXXX" target="_blank"><span>AGENDA TU TURNO</span></a>
+    </div>
+  </div>
+</section>
+
+  <!-- FOOTER PERSONALIZADO -->
+<section class="footer-provenza">
+  <div class="footer-content">
+    <img src="footer-logo.png" alt="Logo Provenza" class="footer-logo">
+    
+    <p class="frase">"Querete. Cuidate. Brillá desde adentro."</p>
+    
+    <div class="social-footer">
+      <a href="https://www.instagram.com/provenzabeauty" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/provenzabeauty" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    </div>
+
+    <p class="direccion">Mendoza, Argentina</p>
+  </div>
+</section>
+
+  <!-- ANIMACIONES -->
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.3 });
+
+    observer.observe(document.querySelector('.hero-content'));
+  </script>
+
+</body>
+</html>
